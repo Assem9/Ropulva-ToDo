@@ -4,10 +4,10 @@ Ropulva ToDo is a versatile Flutter application for managing your tasks. It seam
 
 ## 📱 Screenshots
 
-![Home Screen](screenshots/home.jppg)
-![Add Task](screenshots/add task.png)
+![Home Screen](screenshots/home.jpg)
+![Add Task](screenshots/add task.jpg)
 
-Watch [Record]https://drive.google.com/file/d/1Iuk9kGfutais6br5zGzOFwr_V18Vv0cw/view?usp=drive_link
+![Watch Video Record](ttps://drive.google.com/file/d/1Iuk9kGfutais6br5zGzOFwr_V18Vv0cw/view?usp=drive_link)
 
 ## 🚀 Features
 
