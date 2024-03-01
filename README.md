@@ -1,16 +1,28 @@
-# ropulva_task
+# Ropulva ToDo 📝✅
 
-interview task
+Ropulva ToDo is a versatile Flutter application for managing your tasks. It seamlessly works both offline and online, keeping you organized wherever you go.
 
-## Getting Started
+## 📱 Screenshots
 
-This project is a starting point for a Flutter application.
+![Home Screen](screenshots/home_screen.png)
+![Task Details](screenshots/task_details.png)
 
-A few resources to get you started if this is your first Flutter project:
+## 🚀 Features
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Add, edit, and delete tasks
+- Mark tasks as completed
+- Offline support: Work on your tasks even without an internet connection
+- Synchronization: Your tasks are synced when you reconnect to the internet
+- User-friendly interface for easy task management
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## ⚙️ Getting Started
+
+### Prerequisites
+
+Make sure you have Flutter installed. If not, follow the instructions on the [official Flutter website](https://flutter.dev/docs/get-started/install).
+
+### Installation
+
+1. Clone the repository.
+   ```sh
+   git clone https://github.com/your_username/ropulva_todo.git

@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lottie/lottie.dart';
 import 'package:ropulva_task/app/controllers/tasks_bloc.dart';
 import 'package:ropulva_task/app/controllers/tasks_event.dart';
 import 'package:ropulva_task/app/controllers/tasks_state.dart';
@@ -48,6 +47,7 @@ class HomeScreen extends StatelessWidget {
                // )),
                const SizedBox(height: 16,),
                 _buildTasksGridView(),
+
                 Stack(
                   children: [
                     if(MediaQuery.sizeOf(context).width < 800)
