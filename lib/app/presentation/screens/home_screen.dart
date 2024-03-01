@@ -163,11 +163,11 @@ class HomeScreen extends StatelessWidget {
               toastState: ToastState.error
           );
         }
-        if(state.getTasksRequest == RequestState.success){
-          MyToast.show(
-              context: context,
-              message: 'Tasks Loaded',
-          );
+        if(state.getTasksRequest == RequestState.success && state.tasks.isNotEmpty){
+          // MyToast.show(
+          //     context: context,
+          //     message: 'Tasks Loaded',
+          // );
         }
       },
       listenWhen: (previous,current)=> previous.getTasksRequest !=current.getTasksRequest,

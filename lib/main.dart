@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:device_info_plus/device_info_plus.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
@@ -18,7 +17,6 @@ void main() async {
   await CacheHelper.init();
   await _createFakeUser();
   Hive.registerAdapter(TaskModelAdapter());
- // await _setWindowsDefaultSizes();
   ServiceLocator.initApp() ;
   runApp(const MyApp());
 }
@@ -38,9 +36,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-void _getDeviceToken() async {
-
-}
 
 Future<void> _installFirebase()async{
   if (Platform.isWindows){
