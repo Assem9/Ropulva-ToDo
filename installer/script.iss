@@ -4,13 +4,13 @@
 #define MyAppName "Ropulva ToDo"
 #define MyAppVersion "1.0"
 #define MyAppPublisher "Ropulva "
-#define MyAppURL "https://www.ropulva .com/"
+#define MyAppURL "https://www.ropulva.com/"
 #define MyAppExeName "Ropulva ToDo.exe"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{16B27189-A45B-461A-AF78-1532F23488E0}
+AppId={{96FD79E5-06A4-48D2-9825-BCC29809CA4B}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
@@ -23,7 +23,7 @@ DisableProgramGroupPage=yes
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ;PrivilegesRequired=lowest
 OutputDir=W:\Flutter Projects\ropulva_task\installer
-OutputBaseFilename=mysetup
+OutputBaseFilename=ropulvatodo_setup
 SetupIconFile=C:\Users\Administrator\Downloads\app_icon.ico
 Compression=lzma
 SolidCompression=yes

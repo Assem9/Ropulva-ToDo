@@ -100,6 +100,7 @@ class TaskWidget extends StatelessWidget {
           buildWhen: (previous,current)=> previous.finishTaskRequest != current.finishTaskRequest
           &&  current.finishingTaskId == task.id,
           builder: (context,state){
+            print('state ${state.finishTaskRequest} - ${state.finishingTaskId}');
             if(state.finishTaskRequest == RequestState.loading){
               return const DefaultLoader();
             }

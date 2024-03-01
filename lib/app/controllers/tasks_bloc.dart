@@ -46,8 +46,8 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
       event.task.isDone = true ;
       emit(state.copyWith(
           finishTaskRequest: RequestState.success,
-          tasks: _filterTasks(state.currentFilter
-          ))
+          tasks: _filterTasks(state.currentFilter)
+      )
       );
     });
   }

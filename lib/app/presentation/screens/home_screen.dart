@@ -172,9 +172,10 @@ class HomeScreen extends StatelessWidget {
       },
       listenWhen: (previous,current)=> previous.getTasksRequest !=current.getTasksRequest,
       buildWhen: (previous,current)=>
-      previous.tasks != current.tasks
+      previous.getTasksRequest != current.getTasksRequest
       || previous.finishTaskRequest != current.finishTaskRequest
-      || previous.addNewTaskRequest != current.addNewTaskRequest   ,
+      || previous.addNewTaskRequest != current.addNewTaskRequest
+      || previous.currentFilter != current.currentFilter ,
       builder: (context, state) {
         if(state.getTasksRequest != RequestState.loading){
           return   Expanded(
