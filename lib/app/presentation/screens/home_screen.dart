@@ -177,8 +177,9 @@ class HomeScreen extends StatelessWidget {
       || previous.addNewTaskRequest != current.addNewTaskRequest   ,
       builder: (context, state) {
         if(state.getTasksRequest != RequestState.loading){
-          return Expanded(
-            child:   RefreshIndicator(
+          return   Expanded(
+            child: state.tasks.isNotEmpty
+                ? RefreshIndicator(
               onRefresh: () async{
                 TasksBloc.get(context).add(LoadTasksEvent()) ;
               },
@@ -193,8 +194,9 @@ class HomeScreen extends StatelessWidget {
                   itemBuilder: (context, index) => TaskWidget(task: state.tasks[index]),
                 ),
               ),
-            ),
-          );
+            )
+                : Center(child: Text('No Tasks',style: Theme.of(context).textTheme.titleMedium,),),
+          ) ;
         }
         return _buildTasksShimmerLoading();
 

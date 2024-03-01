@@ -1,21 +1,29 @@
 import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:ropulva_task/app/presentation/screens/home_screen.dart';
+import 'package:ropulva_task/core/services/cache_helper.dart';
 import 'package:ropulva_task/core/services/service_locator.dart';
 import 'package:window_manager/window_manager.dart';
 import 'app/data/models/task_model.dart';
 import 'core/themes/themes.dart';
+import 'core/utils/constatnts.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await _installFirebase();
+  await CacheHelper.init();
+  await _createFakeUser();
   Hive.registerAdapter(TaskModelAdapter());
  // await _setWindowsDefaultSizes();
   ServiceLocator.initApp() ;
   runApp(const MyApp());
 }
+
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -30,6 +38,9 @@ class MyApp extends StatelessWidget {
   }
 }
 
+void _getDeviceToken() async {
+
+}
 
 Future<void> _installFirebase()async{
   if (Platform.isWindows){
@@ -64,4 +75,17 @@ Future<void> _setWindowsDefaultSizes()async{
     await windowManager.show();
     await windowManager.focus();
   });
+}
+
+Future<void> _createFakeUser()async{
+  uid = await CacheHelper.getData(key: 'uid');
+  if(uid == null){
+    final docRef = await FirebaseFirestore
+        .instance
+        .collection(FirebaseConstants.users)
+        .add({'name': 'fakeUser'});
+    uid = docRef.id;
+    await CacheHelper.saveData(key: 'uid', value: uid);
+  }
+ print('fake uid ${uid}');
 }
