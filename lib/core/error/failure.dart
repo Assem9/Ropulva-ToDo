@@ -9,11 +9,9 @@ abstract class Failure{
 }
 
 class ServerFailure extends Failure{
-  final bool? docNotExist ;
   const ServerFailure({
     required super.message,
     required super.code,
-    this.docNotExist = false
   });
 }
 

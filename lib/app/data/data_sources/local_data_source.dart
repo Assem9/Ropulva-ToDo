@@ -6,6 +6,7 @@ import '../models/task_model.dart';
 import 'package:path_provider/path_provider.dart';
 
 class LocalDataSource{
+
   Future<String> _initializeAppDirectory()async{
     late String installationDirectory ;
     if(Platform.isWindows){
@@ -24,6 +25,7 @@ class LocalDataSource{
 
     return installationDirectory  ;
   }
+
   Future<Box<TaskModel>> _openOfflineTasksBox()async {
     String dir = await _initializeAppDirectory() ;
     return await Hive.openBox(
@@ -36,6 +38,7 @@ class LocalDataSource{
     final taskBox = await _openOfflineTasksBox();
     List<TaskModel> tasks = taskBox.values.toList();
     print('local tasks ${tasks.length}');
+    await taskBox.close();
     return tasks;
 
   }
@@ -43,6 +46,7 @@ class LocalDataSource{
   Future<void> clearCache()async{
     final taskBox = await _openOfflineTasksBox();
     taskBox.clear();
+    await taskBox.close();
   }
 
   Future<void> saveTask(TaskModel task)async{

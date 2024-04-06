@@ -22,8 +22,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider.value(
-      value:  getIt<TasksBloc>(),
+    return BlocProvider(
+      create:(context)=>getIt<TasksBloc>()   ,
       child: Scaffold(
         body: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
@@ -80,7 +80,7 @@ class HomeScreen extends StatelessWidget {
                         builder: (context, state) {
                           print('builder showDragTarget ${state.finishTaskRequest}');
                           if( state.showDragTarget){
-                            return Container(color:Colors.white,child: const AnimatedDragTarget( ));
+                            return Container(color:Colors.white,child: const AnimatedDragTarget());
                           }
                           return const SizedBox();
                         }
@@ -220,7 +220,7 @@ class HomeScreen extends StatelessWidget {
                 SizedBox(
                   height: 100,
                   width: double.infinity,
-                  child: const Card(
+                  child: Card(
                     elevation: 9,
                   ),
                 ),
@@ -247,6 +247,7 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
+
   void _showCreateNewTaskBottomSheet(BuildContext context){
     final formKey = GlobalKey<FormState>();
     final titleController=  TextEditingController();
@@ -259,8 +260,10 @@ class HomeScreen extends StatelessWidget {
           value:  getIt<TasksBloc>(),
           child: Padding(
             padding: EdgeInsets.only(
-              right: 8,left: 8,
-                bottom: MediaQuery.of(context).viewInsets.bottom),
+                right: 8,
+                left: 8,
+                bottom: MediaQuery.of(context).viewInsets.bottom
+            ),
             child: Container(
                 decoration: const BoxDecoration(
                     color: Colors.white,

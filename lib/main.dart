@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:ropulva_task/app/presentation/screens/home_screen.dart';
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
+//const TestFireStoreStream(),
 Future<void> _installFirebase()async{
   if (Platform.isWindows){
     await Firebase.initializeApp(
@@ -83,4 +84,56 @@ Future<void> _createFakeUser()async{
     await CacheHelper.saveData(key: 'uid', value: uid);
   }
  print('fake uid ${uid}');
+}
+
+
+class TestFireStoreStream extends StatefulWidget {
+  const TestFireStoreStream({super.key});
+
+  @override
+  State<TestFireStoreStream> createState() => _TestFireStoreStreamState();
+}
+
+class _TestFireStoreStreamState extends State<TestFireStoreStream> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      body: Column(
+        children: [
+          Text('Test Test'),
+      Expanded(
+        child: StreamBuilder<QuerySnapshot>(
+          stream: FirebaseFirestore.instance
+              .collection('users')
+              .doc('HypNkcH4o7QzSfzmlt2G')
+              .collection('tasks')
+              .snapshots(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return CircularProgressIndicator(); // Loading indicator
+            }
+            if (snapshot.hasError) {
+              return Text('Error: ${snapshot.error}');
+            }
+            final List<DocumentSnapshot> documents = snapshot.data!.docs;
+        
+            return ListView.builder(
+              itemCount: documents.length,
+              itemBuilder: (context, index) {
+                final task = documents[index];
+                final taskName = task['title'] as String;
+        
+                return ListTile(
+                  title: Text(taskName),
+                );
+              },
+            );
+          },
+        ),
+      )
+        ],
+      ),
+    );
+  }
 }
